@@ -271,7 +271,7 @@ class Reservation extends React.Component {
       isGoing: true,
       numberOfGuests: 2
     };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -283,6 +283,10 @@ class Reservation extends React.Component {
     this.setState({
       [name]: value
     });
+  }
+  handleSubmit(event){
+    alert("Is going : "+this.state.isGoing+", Number of guests : "+this.state.numberOfGuests);
+    event.preventDefault();
   }
 
   render() {
@@ -303,15 +307,24 @@ class Reservation extends React.Component {
             name="numberOfGuests"
             type="number"
             value={this.state.numberOfGuests}
-            onChange={this.handleInputChange} />
+            onChange={this.handleInputChange} 
+            min="0"/>
         </label>
+        <br />
+        <input type="submit" value="submit" onClick={this.handleSubmit} />
       </form>
     );
   }
 }
+
+ReactDOM.render(
+  <Reservation />,
+  document.getElementById('root')
+);
+
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
+[**Try it on CodePen**](https://codepen.io/Oujlassi/pen/YzKmwKd?editors=0010)
 
 Note how we used the ES6 [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) syntax to update the state key corresponding to the given input name:
 
