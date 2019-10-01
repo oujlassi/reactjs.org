@@ -189,6 +189,8 @@ Overall, this makes it so that `<input type="text">`, `<textarea>`, and `<select
 >```js
 ><select multiple={true} value={['B', 'C']}>
 >```
+## Select multiple options in a select tag :
+
 ```js
   class FlavorForm extends React.Component {
   constructor(props) {
