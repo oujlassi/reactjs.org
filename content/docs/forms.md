@@ -189,6 +189,60 @@ Overall, this makes it so that `<input type="text">`, `<textarea>`, and `<select
 >```js
 ><select multiple={true} value={['B', 'C']}>
 >```
+```js
+  class FlavorForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ['lime', 'mango']};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    let e = event.target.value;
+    if(this.state.value.includes(e)){
+      this.setState(state => ({
+        value: state.value.filter(i => i!== e)})
+                   );
+    }else {
+      this.setState( state => ({
+        value: [...state.value, e]})
+                   );
+    }
+  }
+
+  handleSubmit(event) {
+    alert('Your favorite flavor is: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Pick your favorite flavor:
+          <select multiple={true} value={this.state.value} onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(
+  <FlavorForm />,
+  document.getElementById('root')
+);
+```
+
+[**Try it on CodePen**](https://codepen.io/Oujlassi/pen/MWgMxYY?editors=0010)
+
 
 ## The file input Tag {#the-file-input-tag}
 
