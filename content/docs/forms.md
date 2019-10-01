@@ -263,7 +263,7 @@ When you need to handle multiple controlled `input` elements, you can add a `nam
 
 For example:
 
-```javascript{15,18,28,37}
+```js
 class Reservation extends React.Component {
   constructor(props) {
     super(props);
@@ -321,7 +321,6 @@ ReactDOM.render(
   <Reservation />,
   document.getElementById('root')
 );
-
 ```
 
 [**Try it on CodePen**](https://codepen.io/Oujlassi/pen/YzKmwKd?editors=0010)
